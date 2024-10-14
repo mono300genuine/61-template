@@ -3,7 +3,7 @@ pnpm-lock
 dist
 .DS_Store
 .env
-
+/examples
 # Ignore the output video from Git but not videos you import into src/.
 out
 build
