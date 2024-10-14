@@ -20,7 +20,7 @@ export const CompareWithVideo = ({ example, children }: { example: string; child
   return (
     <AbsoluteFill style={{ overflow: 'visible', width: '100%', height: '100%' }}>
 
-     <AbsoluteFill style={{width:'1920px', height:'1080px'}}>
+     <AbsoluteFill style={{width:'1920px', height:'1080px', position:'absolute'}}>
       {children}
       </AbsoluteFill>
       {COMPARE && (
