@@ -5,7 +5,7 @@ import { useIsFontLoaded } from './LoadFonts';
 import { Font } from '../types';
 import { fontVar } from './helpers';
 
-const DEBUG = false;
+const DEBUG = true;
 
 const createElement = (style: CSSProperties) => {
   const element = document.createElement('div');
@@ -44,33 +44,49 @@ const findMaxFontSize = ({
 
 const splitTextIntoLines = ({
   inputText,
+  maxWidth,
+  maxLines,
   fontSize,
   style,
   template,
 }: {
   inputText: string;
+  maxWidth: number;
   fontSize: number;
+  maxLines: number;
   style: CSSProperties;
   template: Element;
 }) => {
-  const element = createElement(style);
+  const element = document.createElement('div');
+  Object.assign(element.style, style);
   element.style.fontSize = `${fontSize}px`;
   template.appendChild(element);
 
   const words = inputText.replaceAll('\n', ' ').split(' ').filter(Boolean);
   let previousWords: string[] = [];
   const wordLines: string[][] = [];
+  let linesReached = 0;
+
   for (const word of words) {
-    // Adding all the previous words + this word into line
+    // Add current word to the line
     element.textContent = [...previousWords, word].join(' ');
 
-    // If the height is bigger than fontSize then it is more than 1 line, so we push the previousWords as a new line.
-    if (element.clientHeight > fontSize) {
-      wordLines.push(previousWords);
-      previousWords = [];
+    // Check if the current line exceeds maxWidth
+    if (element.clientWidth > maxWidth) {
+      if (linesReached < maxLines - 1) {
+        wordLines.push(previousWords); // Push the current line to wordLines
+        previousWords = [word]; // Start a new line with the current word
+        linesReached++;
+      } else {
+        // Max lines reached; add all remaining words to the last line
+        previousWords.push(word);
+      }
+    } else {
+      previousWords.push(word);
     }
-    previousWords.push(word);
   }
+
+  // Add remaining words as the last line
   wordLines.push(previousWords);
   template.removeChild(element);
 
@@ -106,24 +122,31 @@ export const useTextSplitter = ({
       lineHeight: '1',
       opacity: '0',
       fontFamily: fontVar(font),
-      width: `${props.maxWidth}px`,
+      // width: `${props.maxWidth}px`,
       fontSize: `${props.fontSize}px`,
       fontWeight: props.fontWeight || undefined,
       letterSpacing: props.letterSpacing || undefined,
     };
-    const fontSize = findMaxFontSize({
-      initialFontSize: props.fontSize,
+
+    const text = splitTextIntoLines({
+      inputText: props.text,
+      fontSize: props.fontSize,
       style,
       template,
-      maxLines: props.maxLines,
       maxWidth: props.maxWidth,
-      text: props.text,
+      maxLines: props.maxLines,
     });
+    // const fontSize = findMaxFontSize({
+    //   initialFontSize: props.fontSize,
+    //   style,
+    //   template,
+    //   maxLines: props.maxLines,
+    //   maxWidth: props.maxWidth,
+    //   text,
+    // });
 
-    const text = splitTextIntoLines({ inputText: props.text, fontSize, style, template });
-
-    if (DEBUG) console.log({ key, text, fontSize });
-    setResult({ fontSize, text });
+    if (DEBUG) console.log({ key, text });
+    setResult({ fontSize: props.fontSize, text });
     continueRender(handle);
   }, [...Object.values(props), isFontLoaded]);
 

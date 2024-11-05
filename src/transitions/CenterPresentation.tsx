@@ -1,8 +1,7 @@
-import type { TransitionPresentationComponentProps } from "@remotion/transitions";
-import type { TransitionPresentation } from "@remotion/transitions";
-import React, { useMemo, useState } from "react";
-import { AbsoluteFill, random } from "remotion";
-
+import type { TransitionPresentationComponentProps } from '@remotion/transitions';
+import type { TransitionPresentation } from '@remotion/transitions';
+import React, { useMemo, useState } from 'react';
+import { AbsoluteFill, random } from 'remotion';
 
 export type CustomPresentationProps = {
   width: number;
@@ -11,27 +10,21 @@ export type CustomPresentationProps = {
 
 const CenterPresentation: React.FC<
   TransitionPresentationComponentProps<CustomPresentationProps>
-> = ({
-  children,
-  presentationDirection,
-  presentationProgress,
-  passedProps,
-}) => {
+> = ({ children, presentationDirection, presentationProgress, passedProps }) => {
   const fullSize = Math.sqrt(passedProps.width ** 2 + passedProps.height ** 2);
-  console.log(presentationProgress, "progi");
-  
+  console.log(presentationProgress, 'progi');
+
   const size = fullSize * presentationProgress;
 
   const [clipId] = useState(() => String(random(null)));
   const style: React.CSSProperties = useMemo(() => {
     return {
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
       // display:'flex',
       // justifyContent:'center',
       // alignItems:'center',
-      clipPath:
-        presentationDirection === "exiting" ? undefined : `url(#${clipId})`,
+      clipPath: presentationDirection === 'exiting' ? undefined : `url(#${clipId})`,
     };
   }, [clipId, presentationDirection]);
 
@@ -42,7 +35,7 @@ const CenterPresentation: React.FC<
   return (
     <AbsoluteFill>
       <AbsoluteFill style={style}>{children}</AbsoluteFill>
-      {presentationDirection === "exiting" ? null : (
+      {presentationDirection === 'exiting' ? null : (
         <AbsoluteFill>
           <svg width="100%" height="100%">
             <defs>
@@ -53,39 +46,21 @@ const CenterPresentation: React.FC<
                   width={size}
                   height={size}
                   transform={`rotate(45, ${passedProps.width / 2}, ${passedProps.height / 2})`}
-                  style={{ border: "40px solid yellow" }}
+                  style={{ border: '40px solid yellow' }}
                 />
               </clipPath>
-              <linearGradient
-                id="gradientStroke"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop
-                  offset="0%"
-                  style={{ stopColor: "#fff", stopOpacity: 1 }}
-                />
-                <stop
-                  offset="100%"
-                  style={{ stopColor: "#c7c7c7", stopOpacity: 1 }}
-                />
+              <linearGradient id="gradientStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#fff', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: 'rgba(246,17,115,1)', stopOpacity: 1 }} />
               </linearGradient>
             </defs>
             <rect
-              x={
-                passedProps.width / 2 -
-                (size * (1 + stroke3 + stroke2 + stroke1)) / 2
-              }
-              y={
-                passedProps.height / 2 -
-                (size * (1 + stroke3 + stroke2 + stroke1)) / 2
-              }
+              x={passedProps.width / 2 - (size * (1 + stroke3 + stroke2 + stroke1)) / 2}
+              y={passedProps.height / 2 - (size * (1 + stroke3 + stroke2 + stroke1)) / 2}
               width={size * (1 + stroke3 + stroke2 + stroke1)}
               height={size * (1 + stroke3 + stroke2 + stroke1)}
               transform={`rotate(45, ${passedProps.width / 2}, ${passedProps.height / 2})`}
-              stroke="#7d7d7d"
+              stroke="rgba(246,17,115,1)"
               fill="none"
               strokeWidth={size * stroke1}
             />
@@ -95,7 +70,7 @@ const CenterPresentation: React.FC<
               width={size * (1 + stroke3 + stroke2)}
               height={size * (1 + stroke3 + stroke2)}
               transform={`rotate(45, ${passedProps.width / 2}, ${passedProps.height / 2})`}
-              stroke="#ffffff"
+              stroke="#f74509"
               fill="none"
               strokeWidth={size * stroke2}
             />

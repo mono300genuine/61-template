@@ -5,7 +5,7 @@ import { Compare } from './Composition/Compare';
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-    <Composition
+      <Composition
         id="Template"
         component={Main}
         schema={MainSchema}
@@ -34,41 +34,51 @@ export const RemotionRoot: React.FC = () => {
             stroke: 'backgroundText',
           },
           fonts: {
-            primary: 'Montserrat',
-            secondary: "Abel"
+            primary: 'FrancoisOne',
+            secondary: 'Abel',
           },
-          transitionDuration: 30,
-          scene1Duration: 150,
+          transitionDuration: 50,
+          scene1Duration: 200,
           scene1Props: {
-            logo: staticFile('Logo.png'),
-            title: "Hello world",
+            logo: staticFile('sample_logo.png'),
+            title: 'MASTER ENGLISH, MASTER THE WORLD',
+            img1: staticFile('teaching.png'),
+            img2: staticFile('books.jpg')
           },
-          scene2Duration: 180,
+          scene2Duration: 200,
           scene2Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_1.jpg'),
+            logo: staticFile('sample_logo.png'),
+            title: 'WANT TO SPEAK ENGLISH FLUENTLY?',
+            img1: staticFile('bubble.webp'),
+            img2: staticFile('Media_4.jpg')
           },
-          scene3Duration: 180,
+          scene3Duration: 200,
           scene3Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_2.jpg'),
+            title: 'BAD SKILLS CAN LIMIT OPPORTUNITIES',
+            logo: staticFile('sample_logo.png'),
+            img: staticFile('image3.jpg'),
           },
-          scene4Duration: 180,
+          scene4Duration: 200,
           scene4Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_3.jpg'),
+            title: 'EXPERIENCED iNSTRUCTORS',
+            logo: staticFile('sample_logo.png'),
+            img: staticFile('image6.jpg'),
           },
-          scene5Duration: 180,
+          scene5Duration: 200,
           scene5Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_4.jpg'),
+            title: 'GAIN FLUENCY, CONFIDENCE',
+            logo: staticFile('sample_logo.png'),
+            img: staticFile('image6.jpg'),
           },
-          scene6Duration: 180,
+          scene6Duration: 200,
           scene6Props: {
-            logo: staticFile('Logo.png'),
+            title: 'ENROLL NOW AND START YOUR JOURNEY TO ENGLISH FLUENCY!',
+            logo: staticFile('sample_logo.png'),
+            subTitle: 'wwww.example.com'
           },
         }}
       />
+
       <Composition
         id="Compare"
         component={Compare}
@@ -98,38 +108,47 @@ export const RemotionRoot: React.FC = () => {
             stroke: 'backgroundText',
           },
           fonts: {
-            primary: 'Montserrat',
-            secondary: "Abel"
+            primary: 'FrancoisOne',
+            secondary: 'Abel',
           },
-          transitionDuration: 30,
-          scene1Duration: 150,
+          transitionDuration: 50,
+          scene1Duration: 200,
           scene1Props: {
-            logo: staticFile('Logo.png'),
-            title: "Hello world",
+            logo: staticFile('sample_logo.png'),
+            title: 'MASTER ENGLISH, MASTER THE WORLD',
+            img1: staticFile('teaching.png'),
+            img2: staticFile('books.jpg')
           },
-          scene2Duration: 180,
+          scene2Duration: 200,
           scene2Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_1.jpg'),
+            logo: staticFile('sample_logo.png'),
+            title: 'WANT TO SPEAK ENGLISH FLUENTLY?',
+            img1: staticFile('bubble.webp'),
+            img2: staticFile('Media_4.jpg')
           },
-          scene3Duration: 180,
+          scene3Duration: 200,
           scene3Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_2.jpg'),
+            title: 'BAD SKILLS CAN LIMIT OPPORTUNITIES',
+            logo: staticFile('sample_logo.png'),
+            img: staticFile('image3.jpg'),
           },
-          scene4Duration: 180,
+          scene4Duration: 200,
           scene4Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_3.jpg'),
+            title: 'EXPERIENCED iNSTRUCTORS',
+            logo: staticFile('sample_logo.png'),
+            img: staticFile('image6.jpg'),
           },
-          scene5Duration: 180,
+          scene5Duration: 200,
           scene5Props: {
-            logo: staticFile('Logo.png'),
-            img: staticFile('Media_4.jpg'),
+            title: 'GAIN FLUENCY, CONFIDENCE',
+            logo: staticFile('sample_logo.png'),
+            img: staticFile('image6.jpg'),
           },
-          scene6Duration: 180,
+          scene6Duration: 200,
           scene6Props: {
-            logo: staticFile('Logo.png'),
+            title: 'ENROLL NOW AND START YOUR JOURNEY TO ENGLISH FLUENCY!',
+            logo: staticFile('sample_logo.png'),
+            subTitle: 'wwww.example.com'
           },
         }}
       />

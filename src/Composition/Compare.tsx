@@ -7,7 +7,7 @@ import Main from './Composition'
 export const Compare: React.FC = (props: any) => {
   return (
     // insert Name of your video from public/examples/ folder 
-    <CompareWithVideo example={staticFile(`/examples/${"YourTemplateHere"}.mp4`)}>
+    <CompareWithVideo example={staticFile(`/examples/video.mp4`)}>
       <Main {...props} />
     </CompareWithVideo>
   )
@@ -20,8 +20,8 @@ export const CompareWithVideo = ({ example, children }: { example: string; child
   return (
     <AbsoluteFill style={{ overflow: 'visible', width: '100%', height: '100%' }}>
 
-     <AbsoluteFill style={{width:'1920px', height:'1080px', position:'absolute'}}>
-      {children}
+      <AbsoluteFill style={{ width: '1920px', height: '1080px', position: 'absolute' }}>
+        {children}
       </AbsoluteFill>
       {COMPARE && (
         <AbsoluteFill style={{ zIndex: 50 }}>
